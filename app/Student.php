@@ -13,13 +13,9 @@ class Student extends Model
     // belongsTo
     // belongsToMany
 
-    protected $fillable = [
-        'name',
-    ];
-
-    protected $hidden = ['age'];
 
     public function phone() {
+        
     	return $this->hasOne('App\Phone');
     }
 

@@ -16,6 +16,19 @@ Route::get('/', function () {
 });
 
 
+/*Route::get('/authenticate',''LoginApi@authenticate'')->middleware('logger');
+Route::get('/get-list','LoginApi@getList')->middleware('logger');
+*/
+
+
+Route::middleware(['deeplogger'])->group(function () {
+    Route::get('/authenticate','LoginApi@authenticate');
+	Route::get('/get-list','LoginApi@getList');
+});
+
+
+//Route::get('/authenticate','LoginApi@authenticate');
+
 Route::get('/welcome','WelcomeController@greet');
 
 Route::get('/welcome/{name}','WelcomeController@greetMe');
@@ -67,7 +80,7 @@ Route::get('/test', function() {
 //********************Sample tests for Tutorial & Student***********
 
 	//return App\Tutorial::find(90001);
-   // return App\Tutorial::find(90001)->student;
+   //return App\Tutorial::find(90001)->student;
 
 	//return App\Student::find(10001);
 	//return App\Student::find(10001)->tutorial;
@@ -75,7 +88,7 @@ Route::get('/test', function() {
 
 //********************Sample tests for Lectures From Student*********
 
-	return App\Student::with('tutorial.lecture')->find(10001);
+	//return App\Student::with('tutorial.lecture')->find(10001);
 
 
 //********************Tutorial & Lecture Eager Loading*********
